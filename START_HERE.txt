@@ -1,0 +1,15 @@
+PixelTrace v3.1  (how to start, 3 steps)
+
+1. Close any old PixelTrace server first: click its terminal window and press Ctrl+C.
+   (An old server that is still running is the most common reason for seeing the old page.)
+2. Open a terminal INSIDE THIS FOLDER (the one that contains START_HERE.txt and the folders app and static) and run:
+
+       python -m uvicorn app.main:app --port 8803
+
+   On Windows you can also double-click run_windows.bat.
+3. Open  http://127.0.0.1:8803/  in your browser.
+   You must see a small coloured badge  "v3.1 · new UI"  next to the PixelTrace name at the top left.
+   If you do not see it, you are looking at an old server or an old folder.
+
+Do not unzip this over an old project folder. Unzip it as a new folder and run it from there.
+Needs the same Python packages as before (fastapi, uvicorn, torch, torchvision, pillow, opencv-python, numpy, python-multipart).

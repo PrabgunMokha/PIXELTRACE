@@ -1,0 +1,264 @@
+{
+ "n_ai": 15,
+ "n_real": 13,
+ "v2_ai_flagged": 12,
+ "v2_real_ok": 11,
+ "v1_ai_flagged": 0,
+ "v1_real_ok": 13,
+ "rule": "Selected before any model was run: single image, shortest side at least 256 px, not a collage, diagram or screenshot. Taken from public open-source repositories (README sample images), so they are curated showcase images and may have been resized or recompressed.",
+ "caveat": "Small and uncontrolled: 28 images. It is a sanity check, not a benchmark.",
+ "items": [
+  {
+   "id": "g01",
+   "truth": "ai",
+   "family": "Stable Diffusion",
+   "v1": "real",
+   "v1_p_ai": 0.0001,
+   "v2": "ai_generated",
+   "v2_p_ai": 0.9959
+  },
+  {
+   "id": "g02",
+   "truth": "ai",
+   "family": "Stable Diffusion",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "ai_generated",
+   "v2_p_ai": 0.9993
+  },
+  {
+   "id": "g03",
+   "truth": "ai",
+   "family": "FLUX.1",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "real",
+   "v2_p_ai": 0.0001
+  },
+  {
+   "id": "g04",
+   "truth": "ai",
+   "family": "Kolors",
+   "v1": "real",
+   "v1_p_ai": 0.0001,
+   "v2": "real",
+   "v2_p_ai": 0.0039
+  },
+  {
+   "id": "g05",
+   "truth": "ai",
+   "family": "Kolors",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "ai_generated",
+   "v2_p_ai": 1.0
+  },
+  {
+   "id": "g06",
+   "truth": "ai",
+   "family": "Stable Diffusion",
+   "v1": "real",
+   "v1_p_ai": 0.0164,
+   "v2": "ai_generated",
+   "v2_p_ai": 1.0
+  },
+  {
+   "id": "g07",
+   "truth": "ai",
+   "family": "Stable Diffusion",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "ai_generated",
+   "v2_p_ai": 0.9856
+  },
+  {
+   "id": "g08",
+   "truth": "ai",
+   "family": "Kandinsky 3",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "real",
+   "v2_p_ai": 0.0236
+  },
+  {
+   "id": "g09",
+   "truth": "ai",
+   "family": "Kandinsky 3",
+   "v1": "real",
+   "v1_p_ai": 0.001,
+   "v2": "ai_generated",
+   "v2_p_ai": 0.9988
+  },
+  {
+   "id": "g10",
+   "truth": "ai",
+   "family": "Kandinsky 3",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "ai_generated",
+   "v2_p_ai": 0.9995
+  },
+  {
+   "id": "g11",
+   "truth": "ai",
+   "family": "Kandinsky 3",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "ai_generated",
+   "v2_p_ai": 0.9619
+  },
+  {
+   "id": "g12",
+   "truth": "ai",
+   "family": "Hunyuan-DiT",
+   "v1": "real",
+   "v1_p_ai": 0.0003,
+   "v2": "ai_generated",
+   "v2_p_ai": 0.9999
+  },
+  {
+   "id": "g13",
+   "truth": "ai",
+   "family": "Hunyuan-DiT",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "ai_generated",
+   "v2_p_ai": 1.0
+  },
+  {
+   "id": "g14",
+   "truth": "ai",
+   "family": "Hunyuan-DiT",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "ai_generated",
+   "v2_p_ai": 1.0
+  },
+  {
+   "id": "g15",
+   "truth": "ai",
+   "family": "OmniGen",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "ai_generated",
+   "v2_p_ai": 1.0
+  },
+  {
+   "id": "g16",
+   "truth": "real",
+   "family": "photo (inpainting example set)",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "ai_generated",
+   "v2_p_ai": 0.6796
+  },
+  {
+   "id": "g17",
+   "truth": "real",
+   "family": "photo (inpainting example set)",
+   "v1": "real",
+   "v1_p_ai": 0.0001,
+   "v2": "real",
+   "v2_p_ai": 0.0342
+  },
+  {
+   "id": "g18",
+   "truth": "real",
+   "family": "photo (inpainting example set)",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "real",
+   "v2_p_ai": 0.1358
+  },
+  {
+   "id": "g19",
+   "truth": "real",
+   "family": "photo (inpainting example set)",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "real",
+   "v2_p_ai": 0.0174
+  },
+  {
+   "id": "g20",
+   "truth": "real",
+   "family": "photo (inpainting example set)",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "real",
+   "v2_p_ai": 0.0068
+  },
+  {
+   "id": "g21",
+   "truth": "real",
+   "family": "photo (inpainting example set)",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "real",
+   "v2_p_ai": 0.0086
+  },
+  {
+   "id": "g22",
+   "truth": "real",
+   "family": "photo (inpainting example set)",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "real",
+   "v2_p_ai": 0.0042
+  },
+  {
+   "id": "g23",
+   "truth": "real",
+   "family": "photo (inpainting example set)",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "ai_generated",
+   "v2_p_ai": 0.8866
+  },
+  {
+   "id": "g24",
+   "truth": "real",
+   "family": "camera photo (ultralytics sample)",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "real",
+   "v2_p_ai": 0.1735
+  },
+  {
+   "id": "g25",
+   "truth": "real",
+   "family": "camera photo (ultralytics sample)",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "real",
+   "v2_p_ai": 0.0032
+  },
+  {
+   "id": "g26",
+   "truth": "real",
+   "family": "photo (OpenCV sample data)",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "real",
+   "v2_p_ai": 0.0295
+  },
+  {
+   "id": "g27",
+   "truth": "real",
+   "family": "photo (OpenCV sample data)",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "real",
+   "v2_p_ai": 0.0055
+  },
+  {
+   "id": "g28",
+   "truth": "real",
+   "family": "photo (OpenCV sample data)",
+   "v1": "real",
+   "v1_p_ai": 0.0,
+   "v2": "real",
+   "v2_p_ai": 0.1385
+  }
+ ]
+}

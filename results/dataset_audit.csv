@@ -1,0 +1,7 @@
+set,class,format,n,median_w,median_h
+test_cross,ai_generated,PNG,500,1024.0,1024.0
+test_cross,real,JPEG,500,500.0,378.0
+test_data,ai_generated,PNG,500,256.0,256.0
+test_data,real,JPEG,500,500.0,377.0
+training,ai_generated,PNG,2000,256.0,256.0
+training,real,JPEG,2000,500.0,375.0

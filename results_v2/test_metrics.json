@@ -1,0 +1,134 @@
+{
+  "test_same": {
+    "n": 617,
+    "threshold_saved": {
+      "t": 0.606,
+      "accuracy": 0.8249594813614263,
+      "precision": 0.855595667870036,
+      "recall_ai": 0.7770491803278688,
+      "f1": 0.8144329896907216,
+      "confusion [[TP,FN],[FP,TN]]": [
+        [
+          237,
+          68
+        ],
+        [
+          40,
+          272
+        ]
+      ]
+    },
+    "threshold_0.5": {
+      "t": 0.5,
+      "accuracy": 0.8314424635332253,
+      "precision": 0.845360824742268,
+      "recall_ai": 0.8065573770491803,
+      "f1": 0.825503355704698,
+      "confusion [[TP,FN],[FP,TN]]": [
+        [
+          246,
+          59
+        ],
+        [
+          45,
+          267
+        ]
+      ]
+    },
+    "roc_auc": 0.9024695250105085,
+    "by_generator (accuracy at saved threshold)": {
+      "animagine-xl-3.1": 1.0,
+      "animagine-xl-4.0": 1.0,
+      "chroma": 1.0,
+      "cyberrealistic-pony-v14.0": 0.0,
+      "cyberrealistic-pony-v16.0": 1.0,
+      "cyberrealistic-xl-v9.0": 0.0,
+      "dalle-3": 1.0,
+      "flux-1.1-pro": 0.556,
+      "flux-amateursnapshotphotos": 0.333,
+      "flux-mvc5000": 0.6,
+      "flux.1-dev": 0.846,
+      "flux.1-schnell": 0.833,
+      "flux.2-dev": 1.0,
+      "flux.2-klein-4b": 0.0,
+      "gpt-image-1": 0.857,
+      "gpt-image-1.5": 0.93,
+      "gpt-image-2": 0.5,
+      "grok-2-image-1212": 0.5,
+      "grok-imagine": 0.0,
+      "hidream-i1-full": 1.0,
+      "ideogram-3.0": 0.714,
+      "mystic": 0.8,
+      "novaanimexl_ilv140": 1.0,
+      "playground-v2.5-1024px-aesthetic": 0.5,
+      "pony": 1.0,
+      "qwen-image": 0.0,
+      "real": 0.872,
+      "realistic_vision_v5.1_novae": 0.333,
+      "sd-1.5": 1.0,
+      "sd-1.5-dreamshaper": 0.889,
+      "sd-1.5-epicdream": 0.667,
+      "sd-2.1": 0.844,
+      "sd-3.5": 0.614,
+      "sd-turbo": 1.0,
+      "sd-xl-v1.0-vae-fix": 1.0,
+      "sdxl": 0.556,
+      "sdxl-epic-realism": 1.0,
+      "sdxl-juggernaut": 1.0,
+      "sdxl-realvis-v5": 0.75,
+      "sdxl-touchofrealism": 0.667,
+      "sdxl-turbo": 1.0,
+      "seedream-v4.0": 1.0,
+      "seedream-v4.5": 1.0,
+      "stable-diffusion-v1-4": 0.0,
+      "stable-diffusion-v1-5": 0.667,
+      "stable-diffusion-xl-base-1.0": 1.0,
+      "studio-ghibli-wan2.1-t2v-14b-v1.0": 1.0,
+      "tiny-random-sana": 1.0
+    }
+  },
+  "test_unseen": {
+    "n": 366,
+    "threshold_saved": {
+      "t": 0.606,
+      "accuracy": 0.7622950819672131,
+      "precision": 0.75,
+      "recall_ai": 0.5611510791366906,
+      "f1": 0.6419753086419753,
+      "confusion [[TP,FN],[FP,TN]]": [
+        [
+          78,
+          61
+        ],
+        [
+          26,
+          201
+        ]
+      ]
+    },
+    "threshold_0.5": {
+      "t": 0.5,
+      "accuracy": 0.7568306010928961,
+      "precision": 0.7192982456140351,
+      "recall_ai": 0.5899280575539568,
+      "f1": 0.6482213438735178,
+      "confusion [[TP,FN],[FP,TN]]": [
+        [
+          82,
+          57
+        ],
+        [
+          32,
+          195
+        ]
+      ]
+    },
+    "roc_auc": 0.790764745032168,
+    "by_generator (accuracy at saved threshold)": {
+      "imagen-3.0-002": 0.818,
+      "imagen-4.0": 0.759,
+      "midjourney-6": 0.475,
+      "real": 0.885
+    }
+  }
+}

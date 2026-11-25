@@ -1,0 +1,29 @@
+{
+  "real_class": "Real",
+  "training_generator": "ADM",
+  "unseen_generator": "Midjourney",
+  "images_per_class_train": 2000,
+  "images_per_class_each_test": 500,
+  "generator_counts": {
+    "train": {
+      "Real": 14000,
+      "ADM": 2000,
+      "BigGAN": 2000,
+      "GLIDE": 2000,
+      "Midjourney": 2000,
+      "SD15": 2000,
+      "VQDM": 2000,
+      "Wukong": 2000
+    },
+    "validation": {
+      "Real": 3500,
+      "ADM": 500,
+      "BigGAN": 500,
+      "GLIDE": 500,
+      "Midjourney": 500,
+      "SD15": 500,
+      "VQDM": 500,
+      "Wukong": 500
+    }
+  }
+}

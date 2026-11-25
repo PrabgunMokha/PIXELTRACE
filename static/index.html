@@ -1,0 +1,197 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>PixelTrace · See through synthetic images</title>
+<meta name="theme-color" content="#070a12">
+<link rel="stylesheet" href="styles.css?v=31">
+<script type="importmap">{"imports":{"three":"./vendor/three.module.js"}}</script>
+</head>
+<body data-theme="aurora">
+<canvas id="bg3d" aria-hidden="true"></canvas>
+<div class="blobs" aria-hidden="true"><i></i><i></i><i></i></div>
+<div class="cursor-glow" aria-hidden="true"></div>
+
+<header class="nav">
+  <a class="brand" href="#top"><span class="logo"><i></i><i></i><i></i></span>PixelTrace<span class="vbadge">v3.1 · new UI</span></a>
+  <nav>
+    <a href="#features">Features</a><a href="#lab">Lab</a><a href="#arena">Arena</a><a href="#atlas">Evaluation</a><a href="#trust">Trust</a><a href="/docs" target="_blank" rel="noopener">API ↗</a>
+  </nav>
+  <div class="nav-tools">
+    <div class="theme-dots" id="theme-dots" role="group" aria-label="Colour theme">
+      <button data-theme="aurora" title="Aurora" class="on"></button><button data-theme="sunset" title="Sunset"></button><button data-theme="neon" title="Neon"></button><button data-theme="ocean" title="Ocean"></button>
+    </div>
+    <button class="pill-btn" id="history-btn" type="button">History <b id="hist-count">0</b></button>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero"><div class="hero-scrim" aria-hidden="true"></div>
+    <p class="kicker pop" style="--i:0"><i></i>IMAGE FORENSICS LAB</p>
+    <h1 class="pop" style="--i:1">See through <span class="grad">synthetic</span> images.</h1>
+    <p class="lead pop" style="--i:2">Eight signals, one honest verdict. PixelTrace reads what a file declares, what two classifiers see, and what compression, frequency and noise reveal, and it tells you how much to trust each one.</p>
+    <div class="cta pop" style="--i:3"><a class="btn primary magnetic" href="#lab">Analyse an image</a><a class="btn glass magnetic" href="#arena">Beat the detector</a></div>
+    <div class="stat-row pop" style="--i:4">
+      <div class="stat c-violet"><i class="si">◆</i><b id="st-signals">0</b><span>signals per scan</span></div>
+      <div class="stat c-cyan"><i class="si">⬢</i><b id="st-gens">0</b><span>generators in training</span></div>
+      <div class="stat c-lime"><i class="si">✦</i><b id="st-gallery">0</b><span>images in the arena</span></div>
+      <div class="stat c-amber"><i class="si">▤</i><b id="st-scans">0</b><span>scans in this browser</span></div>
+    </div>
+    <p class="hint">Drag the background · it is a live 3D scene</p>
+  </section>
+
+  <section class="marquee" aria-label="Generators"><div class="track" id="marq1"></div><div class="track rev" id="marq2"></div></section>
+
+  <section class="panel reveal flow-wrap"><div class="section-head"><p class="eyebrow">HOW IT WORKS</p><h2>From upload to <span class="grad">verdict</span> in five steps</h2></div>
+    <div class="flow">
+      <div class="node c-violet"><span>1</span><b>Upload</b><small>JPEG or PNG, one or twelve</small></div>
+      <div class="node c-blue"><span>2</span><b>Read the file</b><small>C2PA, XMP, EXIF, PNG text</small></div>
+      <div class="node c-cyan"><span>3</span><b>Two classifiers</b><small>V1 paper model, V2 extended</small></div>
+      <div class="node c-amber"><span>4</span><b>Evidence</b><small>ELA, spectrum, noise, stress</small></div>
+      <div class="node c-rose"><span>5</span><b>Verdict + trust</b><small>every signal shows its limits</small></div>
+    </div></section>
+  <section id="features" class="panel reveal">
+    <div class="section-head"><p class="eyebrow">WHAT IT DOES</p><h2>Not one score. A whole <span class="grad">investigation</span>.</h2></div>
+    <div class="bento">
+      <article class="tile tilt c-violet wide"><span class="ico">◆</span><h4>Provenance reader</h4><p>Reads C2PA Content Credentials, XMP digital-source-type and the generation parameters that Stable Diffusion WebUI, ComfyUI and NovelAI write into PNG files, plus the hints ChatGPT and Firefly leave behind.</p><div class="viz v-scan"><i></i><i></i><i></i></div></article>
+      <article class="tile tilt c-blue"><span class="ico">⬢</span><h4>Twin classifiers</h4><p>The paper’s ADM model (V1) and an extended model (V2) trained on 60+ generators.</p><div class="viz v-twin"><i></i><i></i></div></article>
+      <article class="tile tilt c-amber"><span class="ico">▦</span><h4>Error Level Analysis</h4><p>Where does JPEG re-compression disagree with itself?</p><div class="viz v-grid"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+      <article class="tile tilt c-pink"><span class="ico">∿</span><h4>Spectrum fingerprint</h4><p>Radial frequency profile and 2D spectrum, ready to inspect.</p><div class="viz v-wave"><svg viewBox="0 0 200 54" preserveAspectRatio="none"><path d="M0 40 C 20 8, 35 52, 55 28 S 90 6, 110 30 S 150 50, 170 16 S 195 30, 200 24"/></svg></div></article>
+      <article class="tile tilt c-lime"><span class="ico">⁘</span><h4>Noise residual</h4><p>What is left when the image is median-filtered away.</p><div class="viz v-noise"></div></article>
+      <article class="tile tilt c-orange wide"><span class="ico">⚡</span><h4>Stress test</h4><p>Re-runs both classifiers after JPEG q75 and q50, resize, blur and crop. A verdict that flips under mild damage is a fragile verdict, and you will see it.</p><div class="flip-demo"><span>real</span><span>AI</span><span>real</span><span>AI</span><span>real</span><span>AI</span></div></article>
+      <article class="tile tilt c-cyan"><span class="ico">⛰</span><h4>3D evidence terrain</h4><p>Your photo draped over its own ELA, Grad-CAM or noise surface.</p><div class="viz v-iso"><i></i><i></i><i></i><i></i><i></i><i></i></div></article>
+      <article class="tile tilt c-green"><span class="ico">▤</span><h4>Batch scan</h4><p>Drop up to 12 images and get a contact sheet and a CSV.</p><div class="viz v-stack"><i></i><i></i><i></i><i></i></div></article>
+      <article class="tile tilt c-rose"><span class="ico">✦</span><h4>Arena</h4><p>Guess real or AI against the model, round by round.</p><div class="viz v-vs"><b>YOU</b><span>⚔</span><b>AI</b></div></article>
+    </div>
+  </section>
+
+  <section id="lab" class="panel reveal">
+    <div class="section-head"><p class="eyebrow">01 · LAB</p><h2>Drop images into the lab</h2><p class="lead small">One image gives the full investigation. Two to twelve give a contact sheet.</p></div>
+    <div class="lab-grid">
+      <div class="card glow drop-card">
+        <label id="dropzone" class="dropzone" for="file-input">
+          <input id="file-input" type="file" accept="image/jpeg,image/png" multiple hidden>
+          <div id="drop-empty" class="drop-empty"><div class="drop-orbit"><i></i><i></i><i></i><span>＋</span></div><strong>Upload or drag images</strong><span>JPEG or PNG · 10 MB each · up to 12</span></div>
+          <div id="preview-strip" class="preview-strip" hidden></div>
+        </label>
+        <div class="file-row" id="file-row" hidden><span id="file-name"></span><button id="remove" class="link" type="button">Clear</button></div>
+        <p id="error" class="error" role="alert"></p>
+        <div class="samples"><span class="muted">Or try images from other generators</span><div class="sample-row" id="sample-row"></div></div>
+        <div class="opts">
+          <label class="slider-row" for="quality">ELA JPEG quality <output id="quality-value">90</output><input id="quality" type="range" min="60" max="100" value="90"></label>
+          <label class="check"><input id="stress-toggle" type="checkbox" checked> Stress test <small>(a few seconds slower)</small></label>
+        </div>
+        <button id="scan-btn" class="btn primary wide magnetic" type="button" disabled>Run analysis</button>
+      </div>
+      <div class="card glow console-card">
+        <div class="console-head"><span class="dots"><i></i><i></i><i></i></span><span id="console-title">PIPELINE · AWAITING INPUT</span></div>
+        <ol id="steps" class="steps">
+          <li data-step="provenance" class="c-violet"><span class="dot"></span><div><b>File provenance &amp; forensics</b><small>C2PA, XMP, EXIF, PNG text</small></div></li>
+          <li data-step="ela" class="c-amber"><span class="dot"></span><div><b>Error Level Analysis</b><small>JPEG re-compression</small></div></li>
+          <li data-step="model" class="c-blue"><span class="dot"></span><div><b>Classifier V1</b><small>EfficientNet-B0 · ADM</small></div></li>
+          <li data-step="extended" class="c-cyan"><span class="dot"></span><div><b>Extended classifier V2</b><small>60+ generators</small></div></li>
+          <li data-step="visuals" class="c-pink"><span class="dot"></span><div><b>Grad-CAM, spectrum, noise</b><small>exploratory visuals</small></div></li>
+          <li data-step="stress" class="c-orange"><span class="dot"></span><div><b>Stress test</b><small>6 degraded variants</small></div></li>
+        </ol>
+        <pre id="log" class="log" aria-live="polite">&gt; ready. choose an image.</pre>
+      </div>
+    </div>
+  </section>
+
+  <section id="batch" class="panel hidden">
+    <div class="section-head"><p class="eyebrow">02 · CONTACT SHEET</p><h2>Batch result</h2></div>
+    <div class="card glow"><div class="batch-top"><div id="batch-summary" class="batch-summary"></div><button id="batch-csv" class="btn glass small" type="button">Download CSV</button></div><div id="batch-grid" class="batch-grid"></div><p class="muted small">Click a tile for the full investigation of that image.</p></div>
+  </section>
+
+  <section id="report" class="report hidden">
+    <div class="section-head"><p class="eyebrow">02 · REPORT</p><h2 id="report-title">Investigation report</h2></div>
+    <div class="card glow verdict" id="verdict" data-tone="neutral">
+      <div class="ring-wrap"><svg viewBox="0 0 120 120" class="ring" aria-hidden="true"><circle class="ring-bg" cx="60" cy="60" r="52"/><circle id="ring-fg" class="ring-fg" cx="60" cy="60" r="52"/></svg><span id="ring-icon" class="ring-icon">—</span></div>
+      <div class="verdict-text">
+        <p class="eyebrow" id="verdict-kicker">VERDICT</p><h3 id="verdict-title">—</h3><p id="verdict-sub" class="verdict-sub"></p><p id="verdict-explain" class="verdict-explain"></p>
+        <div id="disagree" class="disagree" hidden></div>
+        <div class="verdict-actions"><button id="save-pdf" class="btn glass small" type="button">Save as PDF</button><button id="copy-json" class="btn glass small" type="button">Copy JSON</button><button id="again" class="btn glass small" type="button">New scan ↑</button></div>
+      </div>
+      <img id="verdict-thumb" class="verdict-thumb" alt="Analysed image">
+    </div>
+    <div id="signals" class="signals"></div>
+
+    <div class="duo">
+      <div class="card glow"><div class="viewer-head"><div><p class="eyebrow">SIGNAL CONSTELLATION</p><h4>How strong is each signal?</h4><p class="muted small">Orb size is the raw signal strength. Solid orbs vote in the verdict; wireframe orbs are exploratory.</p></div></div>
+        <div class="stage" id="constellation"><div id="const-tip" class="tip" hidden></div><div id="const-labels" class="labels"></div><p id="const-fallback" class="fallback" hidden>3D view needs WebGL.</p></div></div>
+      <div class="card glow viewer-card"><div class="viewer-head"><div><p class="eyebrow">3D EVIDENCE TERRAIN</p><h4>Your image as a landscape</h4><p class="muted small">Drag to rotate, scroll to zoom, hover for values.</p></div>
+        <div class="controls">
+          <div class="seg" id="tex-seg" role="group" aria-label="Surface colour"><button data-tex="photo" class="on">Photo</button><button data-tex="height">Elevation</button><button data-tex="ela">ELA</button><button data-tex="noise">Noise</button><button data-tex="gradcam">Grad-CAM</button></div>
+          <label class="ctl">Height<select id="height-src"><option value="ela">ELA error</option><option value="noise">Noise residual</option><option value="gradcam" id="hs-gradcam">Grad-CAM</option><option value="flat">Flat</option></select></label>
+          <label class="ctl">Scale<input id="height-scale" type="range" min="0" max="3" step="0.05" value="0.9"></label>
+          <label class="check"><input id="wire" type="checkbox"> Wireframe</label><label class="check"><input id="spin" type="checkbox" checked> Auto-rotate</label><button id="reset-cam" class="btn glass small" type="button">Reset</button>
+        </div></div>
+        <div class="stage" id="viewer"><div id="viewer-tip" class="tip" hidden></div><p id="viewer-fallback" class="fallback" hidden>3D view needs WebGL, which this browser has disabled.</p></div></div>
+    </div>
+
+    <div class="card glow compare">
+      <div class="viewer-head"><div><p class="eyebrow">COMPARE</p><h4>Original ⟷ evidence overlay</h4></div><div class="seg" id="cmp-mode"><button data-mode="ela" class="on">ELA</button><button data-mode="noise">Noise</button><button data-mode="gradcam">Grad-CAM</button></div></div>
+      <div class="compare-stage" id="compare"><img id="cmp-original" alt="Original"><div class="cmp-reveal" id="cmp-reveal"><img id="cmp-ela" alt="Overlay"></div><div class="cmp-handle" id="cmp-handle"></div><input id="cmp-range" type="range" min="0" max="100" value="50" aria-label="Comparison position"></div>
+    </div>
+
+    <div class="card glow metrics-card">
+      <div class="viewer-head"><div><p class="eyebrow">RAW EVIDENCE</p><h4>ELA metrics and timing</h4></div></div>
+      <div id="metrics" class="metrics"></div>
+      <p class="eyebrow tight">WHERE THE TIME WENT</p><div id="timing" class="timing"></div><div id="timing-legend" class="timing-legend"></div>
+      <details class="raw"><summary>Show raw API response</summary><pre id="raw"></pre></details>
+    </div>
+  </section>
+
+  <section id="arena" class="panel reveal">
+    <div class="section-head"><p class="eyebrow">03 · ARENA</p><h2>Can you beat the detector?</h2><p class="lead small">Ten images from other generators and real photographs, with known answers. You guess first, then PixelTrace answers. Some rounds it will miss. That is the point.</p></div>
+    <div class="arena-grid">
+      <div class="arena-card" id="arena-card"><div class="flip" id="flip">
+        <div class="face front"><img id="arena-img" alt="Mystery image" decoding="async"><span class="img-msg" id="arena-msg">Loading image…</span><span class="round-badge" id="round-badge">Round 1 of 10</span></div>
+        <div class="face back" id="arena-back"></div></div></div>
+      <div class="card glow arena-panel">
+        <div class="round-dots" id="round-dots"></div>
+        <h3 id="arena-q">Real photo, or AI?</h3>
+        <div class="guess-btns"><button id="g-real" class="guess real magnetic" type="button">Real photo</button><button id="g-ai" class="guess ai magnetic" type="button">AI generated</button></div>
+        <div id="arena-result" class="arena-result"></div>
+        <div class="scoreboard"><div><span>You</span><b id="sc-you">0</b></div><div><span>PixelTrace</span><b id="sc-pt">0</b></div><div><span>Streak</span><b id="sc-streak">0</b></div></div>
+        <button id="arena-next" class="btn primary wide magnetic" type="button" hidden>Next round →</button>
+      </div>
+    </div>
+  </section>
+
+  <section id="atlas" class="panel reveal">
+    <div class="section-head"><p class="eyebrow">04 · EVALUATION</p><h2>How well does it really work?</h2><p class="lead small">Measured results as 3D charts. The models are strong where they were trained and weaker where they were not. Both are shown.</p></div>
+    <div class="card glow atlas-card">
+      <div class="seg atlas-tabs" id="atlas-tabs"><button data-tab="v2" class="on">Extended model (V2)</button><button data-tab="paper">Paper: V1 vs ELA baseline</button></div>
+      <div class="stage tall" id="atlas-stage"><div id="atlas-tip" class="tip" hidden></div><div id="atlas-labels" class="labels"></div><p id="atlas-fallback" class="fallback" hidden>3D chart needs WebGL. The values are listed below.</p></div>
+      <ul class="legend" id="atlas-legend"></ul>
+      <table class="values" id="atlas-table"></table>
+      <p class="muted small" id="atlas-note"></p>
+    </div>
+    <div class="card glow ext-card">
+      <div class="viewer-head"><div><p class="eyebrow">WILD CHECK</p><h4>28 images from public repositories</h4><p class="muted small" id="ext-rule"></p></div><div id="ext-summary" class="ext-summary"></div></div>
+      <div id="ext-dots" class="ext-dots"></div>
+      <p class="muted small">Each dot is one image. Green: V2 was right. Red: V2 was wrong. Click a dot to analyse that image.</p>
+    </div>
+  </section>
+
+  <section id="trust" class="panel reveal">
+    <div class="section-head"><p class="eyebrow">05 · TRUST LEDGER</p><h2>Every signal comes with its limits</h2></div>
+    <div id="trust-grid" class="trust-grid"></div>
+    <p class="muted small center">Not implemented: video analysis, face recognition and identity matching. PixelTrace is a decision-support prototype, not a legal determination.</p>
+  </section>
+</main>
+
+<footer class="foot"><span>PixelTrace · Minor project · Prabgun Mokha</span><span class="muted">Paper: IJPREMS Vol. 06, Issue 11, pp. 855–860 · v<span id="ver">0.3</span></span></footer>
+
+<aside id="drawer" class="drawer" aria-hidden="true">
+  <div class="drawer-head"><h4>Scan history</h4><button id="drawer-close" class="link" type="button">Close ✕</button></div>
+  <p class="muted small">Stored only in this browser.</p>
+  <div id="drawer-list" class="drawer-list"></div>
+  <div class="drawer-foot"><button id="hist-csv" class="btn glass small" type="button">Export CSV</button><button id="hist-clear" class="btn glass small" type="button">Clear</button></div>
+</aside>
+<div id="toasts" class="toasts" aria-live="polite"></div>
+<script type="module" src="app.js?v=31"></script>
+</body>
+</html>

@@ -1,0 +1,12 @@
+{
+  "python": "3.13.16",
+  "os": "Linux-6.6.159+-x86_64-with-glibc2.39",
+  "torch": "2.14.1+cu130",
+  "torchvision": "0.29.1+cu130",
+  "sklearn": "1.6.1",
+  "pillow": "11.3.0",
+  "numpy": "2.4.6",
+  "opencv": "4.14.0",
+  "cuda_available": true,
+  "gpu": "Tesla T4"
+}

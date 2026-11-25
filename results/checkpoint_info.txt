@@ -1,0 +1,2 @@
+checkpoint size bytes: 16346265
+best validation F1 (weighted): 0.9887498417946503

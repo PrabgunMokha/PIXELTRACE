@@ -1,0 +1,54 @@
+{
+  "test_data": {
+    "n": 1000,
+    "accuracy": 0.958,
+    "precision": 0.9978260869565218,
+    "recall": 0.918,
+    "f1": 0.95625,
+    "roc_auc": 0.9992559999999999,
+    "confusion_matrix [[TP,FN],[FP,TN]] (positive = ai_generated)": [
+      [
+        459,
+        41
+      ],
+      [
+        1,
+        499
+      ]
+    ],
+    "accuracy_by_format": {
+      "JPEG": 0.998,
+      "PNG": 0.918
+    },
+    "accuracy_by_class": {
+      "ai_generated": 0.918,
+      "real": 0.998
+    }
+  },
+  "test_cross": {
+    "n": 1000,
+    "accuracy": 0.506,
+    "precision": 0.6875,
+    "recall": 0.022,
+    "f1": 0.04263565891472868,
+    "roc_auc": 0.6911319999999999,
+    "confusion_matrix [[TP,FN],[FP,TN]] (positive = ai_generated)": [
+      [
+        11,
+        489
+      ],
+      [
+        5,
+        495
+      ]
+    ],
+    "accuracy_by_format": {
+      "JPEG": 0.99,
+      "PNG": 0.022
+    },
+    "accuracy_by_class": {
+      "ai_generated": 0.022,
+      "real": 0.99
+    }
+  }
+}
